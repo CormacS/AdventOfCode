@@ -4,7 +4,7 @@ namespace AdventLibrary
 {
     public class Day1
     {
-        public static void Main()
+        public static void Execute()
         {
             Day1 day1 = new Day1();
 
