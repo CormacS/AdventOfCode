@@ -12,7 +12,7 @@ namespace AdventLibrary
 
             try
             {
-                Console.WriteLine($"Day 1 - {day1.Start1(filePath)}");
+                Console.WriteLine($"Day 1 - {day1.Start(filePath)}");
             }
             catch (Exception ex)
             {
@@ -20,7 +20,7 @@ namespace AdventLibrary
             }
         }
 
-        public string Start1(string filePath)
+        public string Start(string filePath)
         {
             string[] list = File.ReadAllLines(filePath);
 
