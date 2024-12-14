@@ -13,7 +13,7 @@ namespace AdventLibrary
         {
             Day2 day2 = new Day2();
 
-            string filePath = "InputFiles/DummyData.txt";
+            string filePath = "InputFiles/Day2.txt";
 
             string[] lines = File.ReadAllLines(filePath);
 
@@ -100,80 +100,103 @@ namespace AdventLibrary
                 {
                     counter++;
                 }
-
             }
 
             Console.WriteLine($"safe: {counter}");
             return counter;
         }
 
-        public int Part2(int[][] numbers)
+        public int Part2(int[][] reports)
         {
-            var counter = 0;
+            int safeCount = 0;
+
+            foreach(var levels in reports)
+            {
+                if(IsSafe(levels) || CanBeSafeWithOneRemoval(levels))
+                {
+                    safeCount++;
+                    Console.WriteLine("Safe report: " + string.Join(" ", levels));
+                }
+                else
+                {
+                                        
+                }
+            }
+            Console.WriteLine($"Unsafe report total: {1000 - safeCount}");
+            Console.WriteLine($"Number of safe reports: {safeCount}");
+            return safeCount;
+        }
+
+        static bool IsSafe(int[] numbers)
+        {
+            bool? isIncrease = null;
 
             for(int i = 0; i < numbers.Length; i++)
             {
-                bool? isIncrease = null;
-                var badLevel = 0;
-
-                for(int j = 0; j < numbers[i].Length; j++)
+                // make sure we dont go out of bounds
+                if(i + 1 == numbers.Length)
                 {
-                    var safe = true;
+                    break;
+                }
 
-                    // make sure we dont go out of bounds
-                    if(j + 1 == numbers[i].Length)
-                    {
-                        break;
-                    }
+                // if same number, unsafe level
+                if(numbers[i] == numbers[i + 1])
+                {
+                    return false;
+                }
+                else if(isIncrease == null)
+                {
+                    isIncrease = numbers[i] < numbers[i + 1];
+                }
 
-                    // if same number, unsafe level
-                    if(numbers[i][j] == numbers[i][j + 1])
+                if(isIncrease == true)
+                {
+                    // means we are decreasing when we should be increasing
+                    if(numbers[i] > numbers[i + 1])
                     {
-                        safe = false;
+                        return false;
                     }
-                    else if(isIncrease == null)
+                }
+                else
+                {
+                    // means we are increasing and should be decreasing
+                    if(numbers[i] < numbers[i + 1])
                     {
-                        isIncrease = numbers[i][j] < numbers[i][j + 1];
-                    }
-
-                    if(isIncrease == true)
-                    {
-                        // means we are decreasing when we should be increasing
-                        if(numbers[i][j] > numbers[i][j + 1])
-                        {
-                            safe = false;
-                        }
-                    }
-                    else
-                    {
-                        // means we are increasing and should be decreasing
-                        if(numbers[i][j] < numbers[i][j + 1])
-                        {
-                            safe = false;
-                        }
-                    }
-
-                    // if difference is greater than 3 its unsafe
-                    if((Math.Abs(numbers[i][j] - numbers[i][j + 1])) > 3)
-                    {
-                        safe = false;
-                    }
-
-                    if (!safe)
-                    {
-                        badLevel++;
+                        return false;
                     }
                 }
 
-                if(badLevel < 2)
+                // if difference is greater than 3 its unsafe
+                if((Math.Abs(numbers[i] - numbers[i + 1])) > 3)
                 {
-                    counter++;
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // How to remove 1 number from the jagged array and then compare if list is now safe
+        // loops through the list of numbers and removes 1, then checks if list is safe, then try next one
+        static bool CanBeSafeWithOneRemoval(int[] levels)
+        {
+            for(int i = 0; i < levels.Length; i++)
+            {
+                int[] modifiedLevels = new int[levels.Length - 1];
+                int index = 0;
+
+                for(int j = 0; j < levels.Length; j++)
+                {
+                    if(j != i)
+                    {
+                        modifiedLevels[index++] = levels[j];
+                    }
                 }
 
+                if(IsSafe(modifiedLevels))
+                    return true;
             }
 
-            Console.WriteLine($"safe: {counter}");
-            return counter;
+            return false;
         }
     }
 }

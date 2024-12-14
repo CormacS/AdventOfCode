@@ -8,7 +8,7 @@ namespace AdventLibrary
         public static void Main(string[] args)
         {
             // too lazy to implement just change to whichever day you want to see
-            Day2.Execute();
+            Day12.Execute();
         }
     }
 }
