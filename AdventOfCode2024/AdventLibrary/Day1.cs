@@ -12,7 +12,7 @@ namespace AdventLibrary
 
             try
             {
-                Console.WriteLine($"Day 1 - {day1.Start(filePath)}");
+                Console.WriteLine($"Day 1: {day1.Start(filePath)}");
             }
             catch (Exception ex)
             {
@@ -42,7 +42,7 @@ namespace AdventLibrary
 
             var part2 = Part2(list2, list3);
 
-            var result = $"Answers are: P1:{part1} and P2:{part2}";
+            var result = $"P1: {part1}, P2: {part2}";
             return result;
         }
 

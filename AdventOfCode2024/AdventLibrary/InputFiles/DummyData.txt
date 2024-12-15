@@ -1,3 +1,1 @@
-﻿Button A: X+26, Y+66
-Button B: X+67, Y+21
-Prize: X=12748, Y=12176
+﻿@~don't()mul(683,461) >,~select()what()};<mul(848,589)!#{$$:,#mul(597,936)]!how();)+mul(944,148)who()mul(84,922)what()(mul(95,23)[;]*mul(186,673)$@+,;mul(662,571),^^&&mul(467,635)]>what()*,why()mul(456,228)%/'where()~{mul(508,422)mul(78,184)&why()/(mul(373,546)why()*</mul(840,607)(:how(428,64)>why():-~{@mul(615,760)}?/*>$mul(422,670)},?#''how()@#mul(597,259)??mul(281,991)when()why()]/;}:who()why()/mul(864,121)how()#{[from()&mul(336,536) what()/what()#:>mul(908,667)

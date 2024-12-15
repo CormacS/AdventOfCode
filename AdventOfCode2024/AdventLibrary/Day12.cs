@@ -35,9 +35,8 @@ namespace AdventLibrary
         }
 
         public void Part1(char[,] grid)
-        {
-            Console.WriteLine("Grid:");
-            PrintGrid(grid);
+        {            
+            //PrintGrid(grid);
 
             var visited = new bool[grid.GetLength(0), grid.GetLength(1)];
             var price = 0;
@@ -50,21 +49,17 @@ namespace AdventLibrary
                     if(!visited[i, j])
                     {
                         var (area, perimeter) = CalculateAreaAndPerimeter(grid, visited, i, j, letter);
-                        Console.WriteLine($"Letter: {letter}, Area: {area}, Perimeter: {perimeter}");
 
                         price = price + (area * perimeter);
                     }
                 }
             }
 
-            Console.WriteLine($"Total Price: {price}");
+            Console.WriteLine($"Day 12: P1: {price}");
         }
 
         public void Part2(char[,] grid)
         {
-            Console.WriteLine("Grid:");
-            PrintGrid(grid);
-
             var visited = new bool[grid.GetLength(0), grid.GetLength(1)];
             var price = 0;
 
@@ -312,18 +307,6 @@ namespace AdventLibrary
                 }
             }
             return true;
-        }
-
-        static void PrintGrid(char[,] grid)
-        {
-            for(int i = 0; i < grid.GetLength(0); i++)
-            {
-                for(int j = 0; j < grid.GetLength(1); j++)
-                {
-                    Console.Write(grid[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
         }
     }
 }

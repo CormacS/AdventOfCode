@@ -29,7 +29,10 @@ namespace AdventLibrary
                 }                
             }
 
-            var part1 = day2.Part2(numbers);
+            var part1 = day2.Part1(numbers);
+            var part2 = day2.Part2(numbers);
+
+            Console.WriteLine($"Day 2: P1: {part1}, P2:{part2}");
         }
 
         public int Part1(int[][] numbers)
@@ -102,7 +105,6 @@ namespace AdventLibrary
                 }
             }
 
-            Console.WriteLine($"safe: {counter}");
             return counter;
         }
 
@@ -115,15 +117,13 @@ namespace AdventLibrary
                 if(IsSafe(levels) || CanBeSafeWithOneRemoval(levels))
                 {
                     safeCount++;
-                    Console.WriteLine("Safe report: " + string.Join(" ", levels));
                 }
                 else
                 {
                                         
                 }
             }
-            Console.WriteLine($"Unsafe report total: {1000 - safeCount}");
-            Console.WriteLine($"Number of safe reports: {safeCount}");
+
             return safeCount;
         }
 

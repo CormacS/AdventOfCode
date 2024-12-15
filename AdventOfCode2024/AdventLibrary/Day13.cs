@@ -48,15 +48,14 @@ namespace AdventLibrary
                     long prizeY = long.Parse(prizeTargets[1].Trim().Substring(2));
 
                     long result1 = day13.Part1(aX, bX, prizeX, aY, bY, prizeY);
-                    long result2 = day13.Part2(aX, bX, prizeX, aY, bY, prizeY);
-                    Console.WriteLine($"Solutions for {aX}x + {bX}y = {prizeX}: {result1}");
+                    //long result2 = day13.Part2(aX, bX, prizeX, aY, bY, prizeY);
 
                     total1 = total1 + result1;
-                    total2 = total2 + result2;
+                    total2 = total2;
                 }
             }
 
-            Console.WriteLine(total1 + " " + total2);
+            Console.WriteLine($"Day 13: P1:{total1}");
         }
 
         public long Part1(int aX, int bX, long prizeX, int aY, int bY, long prizeY)
